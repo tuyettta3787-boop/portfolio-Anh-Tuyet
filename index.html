@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trần Thị Ánh Tuyết | Portfolio</title>
+  <meta name="description" content="Portfolio của Trần Thị Ánh Tuyết – sinh viên Công nghệ thông tin, Viện Đào tạo Chất lượng Cao, Trường Đại học Giao thông vận tải TP.HCM. Một cuốn album ảnh và phim về hành trình học tập.">
+  <meta name="theme-color" content="#1F2B25">
+
+  <!-- Bật lớp "js" sớm để CSS biết khi nào được ẩn nội dung chờ hiệu ứng (tắt JS thì nội dung vẫn hiện) -->
+  <script>document.documentElement.classList.add("js");</script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Caveat:wght@500;700&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,600&family=Space+Mono:wght@400;700&family=Playfair+Display:wght@800;900&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="images/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/album.css">
+</head>
+<body>
+
+  <!-- ============ BÌA ALBUM (màn hình mở đầu) ============ -->
+  <div class="cover" id="cover" role="dialog" aria-modal="true" aria-labelledby="cv-title">
+    <div class="book" id="book">
+      <div class="book-inner" aria-hidden="true"></div>
+      <div class="book-front">
+        <span class="cv-no">ALBUM Nº 01</span>
+        <div class="cv-window"><img src="images/cursor-avatar.jpg" alt="Ảnh đại diện Ánh Tuyết" width="120" height="120"></div>
+        <h2 id="cv-title">Trần Thị<br>Ánh Tuyết</h2>
+        <p class="cv-sub">Portfolio · 2026</p>
+      </div>
+    </div>
+    <button class="cv-btn" id="coverBtn" type="button">Mở album</button>
+    <p class="cv-hint">hoặc bấm vào bìa</p>
+  </div>
+
+  <a class="skip-link" href="#hero">Bỏ qua menu, đến nội dung chính</a>
+
+  <!-- Nền sticker 3D (Three.js) nổi trên mặt bàn -->
+  <canvas id="bg3d" aria-hidden="true"></canvas>
+
+  <!-- ============ THANH TRÊN: bộ đếm khung hình ============ -->
+  <header class="bar">
+    <a class="bar-brand" href="#hero" aria-label="Về trang bìa">
+      <img src="images/cursor-avatar.jpg" alt="" width="34" height="34">
+      <span>Album của Ánh Tuyết</span>
+    </a>
+    <nav class="bar-nav" id="barNav" aria-label="Menu chính">
+      <a href="#gioi-thieu">Giới thiệu</a>
+      <a href="#hoc-van">Học vấn</a>
+      <a href="#du-an">Dự án</a>
+      <a href="#ky-nang">Kỹ năng</a>
+      <a href="#kinh-nghiem">Kinh nghiệm</a>
+      <a href="#chung-chi">Chứng chỉ</a>
+      <a href="#cta">Liên hệ</a>
+    </nav>
+    <p class="counter" aria-live="off"><span class="rec" aria-hidden="true"></span>KHUNG <b id="frameNo">01</b> / 08</p>
+  </header>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+
+  <!-- ============ MENU: các tab ngăn trang của album ============ -->
+  <nav class="tabs" id="tabs" aria-label="Menu chuyển trang">
+    <a href="#gioi-thieu" class="t1"><i>01</i><span>Giới thiệu</span></a>
+    <a href="#hoc-van" class="t2"><i>02</i><span>Học vấn</span></a>
+    <a href="#du-an" class="t3"><i>03</i><span>Dự án</span></a>
+    <a href="#ky-nang" class="t4"><i>04</i><span>Kỹ năng</span></a>
+    <a href="#kinh-nghiem" class="t1"><i>05</i><span>Kinh nghiệm</span></a>
+    <a href="#chung-chi" class="t2"><i>06</i><span>Chứng chỉ</span></a>
+    <a href="#cta" class="t3"><i>07</i><span>Liên hệ</span></a>
+  </nav>
+
+  <main class="album">
+
+    <!-- ================= TRANG BÌA / HERO ================= -->
+    <section class="page hero" id="hero" data-no="01" aria-label="Giới thiệu đầu trang">
+      <div class="hero-text">
+        <p class="hello reveal">Xin chào, mình là</p>
+        <h1 class="name reveal" aria-label="Trần Thị Ánh Tuyết"><span class="n1">Trần Thị</span><span class="n2">Ánh Tuyết</span></h1>
+        <p class="tag reveal">Sinh viên ngành Công nghệ thông tin</p>
+        <p class="school reveal">Viện Đào tạo Chất lượng Cao – UTH</p>
+        <p class="year reveal"><span>2026</span><i class="stamp" aria-hidden="true">ALBUM<br>2026</i></p>
+        <div class="hero-actions reveal">
+          <a class="btn btn-ink" href="#gioi-thieu">Xem thông tin</a>
+          <a class="btn btn-red" href="files/CV-Tran-Thi-Anh-Tuyet.pdf" download>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Tải CV (PDF)
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-photos">
+        <figure class="pol pol-main photo reveal" id="portrait"><span class="tape" aria-hidden="true"></span>
+          <img src="images/avatar.jpg" alt="Ảnh đại diện của Trần Thị Ánh Tuyết" width="420" height="560">
+          <figcaption>Ánh Tuyết</figcaption></figure>
+        <figure class="snap s1 photo reveal" style="--d:250ms"><i class="pc" aria-hidden="true"></i><img src="images/thpt.jpg" alt="Ánh Tuyết cầm giấy khen học sinh giỏi ở trường THPT" width="134" height="168"><figcaption>THPT</figcaption></figure>
+        <figure class="snap s2 photo reveal" style="--d:400ms"><i class="pc" aria-hidden="true"></i><img src="images/about-photo.jpg" alt="Ảnh chân dung Ánh Tuyết" width="134" height="168"><figcaption>Mình đây</figcaption></figure>
+        <figure class="snap s3 photo reveal" style="--d:550ms"><i class="pc" aria-hidden="true"></i><img src="images/uth.jpg" alt="Ánh Tuyết tại trường Đại học Giao thông vận tải TP.HCM" width="134" height="168"><figcaption>UTH</figcaption></figure>
+      </div>
+    </section>
+
+    <!-- ================= 01. GIỚI THIỆU ================= -->
+    <section class="page" id="gioi-thieu" data-no="02" aria-labelledby="about-title">
+      <header class="pg-head reveal">
+        <p class="kick">01 · Giới thiệu</p>
+        <h2 id="about-title"><span class="script">Một chút</span> <span class="hl">về mình</span>…</h2>
+      </header>
+
+      <div class="about">
+        <article class="note reveal" aria-label="Giới thiệu bản thân">
+          <p class="n-line">Mình là <strong>Trần Thị Ánh Tuyết</strong>, sinh viên năm 3 ngành Công nghệ thông tin tại Trường Đại học Giao thông vận tải TP.HCM.</p>
+          <p class="n-line">Mình yêu thích khám phá công nghệ và đã được tiếp cận với nhiều lĩnh vực như <mark>lập trình</mark>, <mark>cơ sở dữ liệu</mark> và <mark>phát triển phần mềm</mark>.</p>
+          <p class="n-line">Mình mong muốn có cơ hội vận dụng kiến thức đã học vào thực tế, tích lũy kinh nghiệm và hoàn thiện bản thân trong lĩnh vực công nghệ thông tin.</p>
+          <dl class="stats" aria-label="Thông tin cá nhân">
+            <div><dt>Sinh ngày</dt><dd>16/10/2006</dd></div>
+            <div><dt>Nơi sống</dt><dd>TP Hồ Chí Minh</dd></div>
+            <div><dt>GPA</dt><dd>3.1</dd></div>
+            <div><dt>Dự án</dt><dd>3 dự án</dd></div>
+          </dl>
+          <blockquote class="slogan">
+            <p>Code là nét vẽ,<br><em>giao diện</em> là bức tranh.</p>
+            <cite>— Ánh Tuyết</cite>
+          </blockquote>
+          <ul class="facts" aria-label="Thông tin nhanh"><li>Công nghệ thông tin</li><li>UTH · TP.HCM</li></ul>
+        </article>
+
+        <figure class="pol pol-about photo reveal"><span class="tape" aria-hidden="true"></span>
+          <img src="images/about-photo.jpg" alt="Ảnh chân dung Trần Thị Ánh Tuyết" width="800" height="1000" loading="lazy">
+          <figcaption>Trần Thị Ánh Tuyết</figcaption>
+          <span class="badge" aria-hidden="true">Sinh viên<br>năm 3</span>
+        </figure>
+
+        <article class="goal reveal" aria-labelledby="win-title">
+          <p class="fe-kicker">Mục tiêu nghề nghiệp</p>
+          <p class="goal-title" id="win-title">Frontend <span class="hl">Developer</span></p>
+          <p class="lead">Mình định hướng phát triển sự nghiệp trong lĩnh vực <strong>Frontend Developer</strong>, với mong muốn tạo ra những giao diện website có tính <mark>thẩm mỹ</mark>, <mark>dễ sử dụng</mark> và mang lại <mark>trải nghiệm tốt</mark> cho người dùng.</p>
+          <ul class="fe-list" aria-label="Ba tiêu chí cho giao diện">
+            <li>Thẩm mỹ</li><li>Dễ sử dụng</li><li>Trải nghiệm tốt</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================= 02. HỌC VẤN: dải phim ================= -->
+    <section class="page" id="hoc-van" data-no="03" aria-labelledby="edu-title">
+      <header class="pg-head reveal">
+        <p class="kick">02 · Học vấn</p>
+        <span class="eyebrow">Hành trình học tập</span>
+        <h2 id="edu-title">Học <span class="hl">vấn</span></h2>
+      </header>
+
+      <div class="strip reveal">
+        <div class="frame">
+          <figure class="fr-photo photo"><img src="images/thpt.jpg" alt="Ánh Tuyết mặc áo dài trắng, đeo thẻ học sinh tại trường THPT Phạm Văn Đồng" width="520" height="650" loading="lazy"><figcaption>THPT</figcaption></figure>
+          <article class="fr-card edu-past">
+            <p class="fr-year">2021 – 2024</p>
+            <h3><button class="edu-toggle" type="button" aria-expanded="false" aria-controls="more-thpt"><span class="edu-t">Trường THPT Phạm Văn Đồng</span><span class="edu-plus" aria-hidden="true"></span></button></h3>
+            <p class="edu-hint">Nhấn để xem chi tiết</p>
+            <div class="edu-more" id="more-thpt"><div>
+              <ul class="edu-points">
+                <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Tốt nghiệp THPT loại Giỏi</li>
+                <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Tham gia đầy đủ các hoạt động của lớp và trường</li>
+              </ul>
+            </div></div>
+          </article>
+        </div>
+
+        <div class="frame">
+          <figure class="fr-photo photo"><img src="images/uth.jpg" alt="Ảnh Ánh Tuyết tại trường Đại học Giao thông vận tải TP.HCM" width="520" height="650" loading="lazy"><figcaption>Đại học</figcaption></figure>
+          <article class="fr-card edu-now">
+            <p class="fr-year now"><i aria-hidden="true"></i>2024 – nay · Đang theo học</p>
+            <h3><button class="edu-toggle" type="button" aria-expanded="false" aria-controls="more-uth"><span class="edu-t">Trường Đại học Giao thông vận tải TP.HCM <span>(UTH)</span></span><span class="edu-plus" aria-hidden="true"></span></button></h3>
+            <p class="edu-sub">Viện Đào tạo Chất lượng Cao</p>
+            <p class="edu-hint">Nhấn để xem chi tiết</p>
+            <div class="edu-more" id="more-uth"><div>
+              <p class="edu-major"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Ngành Công nghệ thông tin</p>
+              <p class="edu-major"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Sinh viên năm 3</p>
+            </div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 03. DỰ ÁN: các khung slide ================= -->
+    <section class="page" id="du-an" data-no="04" aria-labelledby="exp-title">
+      <header class="pg-head reveal">
+        <p class="kick">03 · Dự án của tôi</p>
+        <span class="eyebrow">Những gì mình đã làm</span>
+        <h2 id="exp-title">Dự <span class="hl">án</span></h2>
+      </header>
+
+      <div class="filter reveal" role="group" aria-label="Lọc dự án">
+        <button type="button" class="chip on" data-f="all" aria-pressed="true">Tất cả dự án</button>
+        <button type="button" class="chip" data-f="ca-nhan" aria-pressed="false">Dự án cá nhân</button>
+        <button type="button" class="chip" data-f="nhom" aria-pressed="false">Dự án nhóm</button>
+        <span class="f-count" id="fCount" aria-live="polite">3 khung hình</span>
+      </div>
+
+      <ul class="slides" id="slides">
+        <li class="slide" data-type="ca-nhan" tabindex="0" role="button" aria-label="Xem chi tiết dự án Website Portfolio cá nhân">
+          <div class="sl-img"><div class="px-ph"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="2"/><path d="M4 18l5-5 4 4 3-3 4 4"/></svg><b>Ảnh dự án</b><span>Đặt ảnh vào <code>images/projects/portfolio.jpg</code></span></div><img src="images/projects/portfolio.jpg" alt="Ảnh trang chủ website Portfolio cá nhân" loading="lazy" onerror="this.remove()"><span class="sl-no" aria-hidden="true">01</span></div>
+          <div class="sl-body">
+            <h3>Website Portfolio cá nhân</h3>
+            <p class="px-chips"><span class="px-type">Dự án cá nhân</span></p>
+            <p class="exp-desc">Thiết kế và xây dựng website Portfolio giới thiệu bản thân. Tập trung xây dựng giao diện trực quan, thẩm mỹ, thân thiện và dễ sử dụng.</p>
+            <span class="sl-more" aria-hidden="true">Mở khung xem chi tiết →</span>
+          </div>
+          <template class="pd-tpl">
+            <p class="pd-kicker">Dự án cá nhân</p>
+            <h3 class="pd-title">Website Portfolio cá nhân</h3>
+            <span class="pd-rule" aria-hidden="true"></span>
+            <p class="pd-role">Thiết kế & lập trình</p>
+            <ul class="exp-tech" aria-label="Công nghệ"><li>HTML5</li><li>CSS3</li><li>JavaScript</li><li>Three.js</li></ul>
+            <div class="pd-box"><p>Thiết kế và xây dựng website Portfolio giới thiệu bản thân. Tập trung xây dựng giao diện trực quan, thẩm mỹ, thân thiện và dễ sử dụng.</p></div>
+            <h4 class="pd-h">Tính năng nổi bật</h4>
+            <ul class="pd-feats"><li>✦ Giao diện responsive trên máy tính và điện thoại</li><li>✦ Nền 3D chuyển động và các hiệu ứng khi cuộn trang</li><li>✦ Bố cục sáng tạo: cuốn album ảnh, dải phim học vấn, khung slide dự án</li></ul>
+            <h4 class="pd-h">Hình ảnh dự án</h4>
+            <figure class="pd-fig"><div class="px-ph"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="2"/><path d="M4 18l5-5 4 4 3-3 4 4"/></svg><b>Ảnh dự án</b><span>Đặt ảnh vào <code>images/projects/portfolio.jpg</code></span></div><img src="images/projects/portfolio.jpg" alt="" loading="lazy" onerror="this.remove()"><figcaption>Giao diện dự án</figcaption></figure>
+            <div class="pd-box"><h4 class="pd-h">Kết quả</h4><p>Rèn luyện kỹ năng thiết kế giao diện và xây dựng website bằng HTML, CSS, JavaScript.</p></div>
+            <p class="pd-src"><a href="https://github.com/tuyettta3787-boop" target="_blank" rel="noopener">github.com/tuyettta3787-boop</a></p>
+          </template>
+        </li>
+
+        <li class="slide" data-type="nhom" tabindex="0" role="button" aria-label="Xem chi tiết dự án Website việc làm infocv.vn">
+          <div class="sl-img"><div class="px-ph"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="2"/><path d="M4 18l5-5 4 4 3-3 4 4"/></svg><b>Ảnh dự án</b><span>Đặt ảnh vào <code>images/projects/infocv.jpg</code></span></div><img src="images/projects/infocv.jpg" alt="Ảnh giao diện website việc làm infocv.vn" loading="lazy" onerror="this.remove()"><span class="sl-no" aria-hidden="true">02</span></div>
+          <div class="sl-body">
+            <h3>Website việc làm infocv.vn</h3>
+            <p class="px-chips"><span class="px-type">Dự án nhóm</span><span class="exp-now"><i aria-hidden="true"></i>Đang thực hiện</span></p>
+            <p class="exp-desc">Website hướng đến giao diện thân thiện, dễ sử dụng, với các chức năng phục vụ người tìm việc và nhà tuyển dụng. Tham gia phát triển các chức năng quản trị nhằm hỗ trợ quản lý thông tin và nội dung trên hệ thống.</p>
+            <span class="sl-more" aria-hidden="true">Mở khung xem chi tiết →</span>
+          </div>
+          <template class="pd-tpl">
+            <p class="pd-kicker">Dự án nhóm · Môn Lập trình Web</p>
+            <h3 class="pd-title">Website việc làm infocv.vn</h3><p class="pd-status"><span class="exp-now"><i aria-hidden="true"></i>Đang thực hiện</span></p>
+            <span class="pd-rule" aria-hidden="true"></span>
+            <p class="pd-role">Tham gia phát triển các chức năng quản trị</p>
+            <ul class="exp-tech" aria-label="Công nghệ"><li class="pd-ph-chip"></li></ul>
+            <div class="pd-box"><p>Website hướng đến giao diện thân thiện, dễ sử dụng, với các chức năng phục vụ người tìm việc và nhà tuyển dụng. Tham gia phát triển các chức năng quản trị nhằm hỗ trợ quản lý thông tin và nội dung trên hệ thống.</p></div>
+            <h4 class="pd-h">Tính năng nổi bật</h4>
+            <ul class="pd-feats"><li>✦ Chức năng phục vụ người tìm việc và nhà tuyển dụng</li><li>✦ Chức năng quản trị: quản lý thông tin và nội dung trên hệ thống</li></ul>
+            <h4 class="pd-h">Hình ảnh dự án</h4>
+            <figure class="pd-fig"><div class="px-ph"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="2"/><path d="M4 18l5-5 4 4 3-3 4 4"/></svg><b>Ảnh dự án</b><span>Đặt ảnh vào <code>images/projects/infocv.jpg</code></span></div><img src="images/projects/infocv.jpg" alt="" loading="lazy" onerror="this.remove()"><figcaption>Giao diện dự án</figcaption></figure>
+            <div class="pd-box"><h4 class="pd-h">Kết quả</h4><p>Dự án đang được thực hiện.</p></div>
+            <p class="pd-src"><span class="pd-ph"></span></p>
+          </template>
+        </li>
+
+        <li class="slide" data-type="nhom" tabindex="0" role="button" aria-label="Xem chi tiết dự án Mô phỏng thuật toán lập lịch CPU theo độ ưu tiên">
+          <div class="sl-img"><div class="px-ph"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="2"/><path d="M4 18l5-5 4 4 3-3 4 4"/></svg><b>Ảnh dự án</b><span>Đặt ảnh vào <code>images/projects/cpu.jpg</code></span></div><img src="images/projects/cpu.jpg" alt="Ảnh giao diện chương trình mô phỏng lập lịch CPU" loading="lazy" onerror="this.remove()"><span class="sl-no" aria-hidden="true">03</span></div>
+          <div class="sl-body">
+            <h3>Mô phỏng thuật toán lập lịch CPU theo độ ưu tiên</h3>
+            <p class="px-chips"><span class="px-type">Dự án nhóm</span></p>
+            <p class="exp-desc">Xây dựng chương trình mô phỏng thuật toán lập lịch CPU theo độ ưu tiên bằng Python, sử dụng Tkinter để thiết kế giao diện, cho phép nhập thông tin tiến trình và tính toán thời gian chờ, thời gian hoàn thành cùng các giá trị trung bình.</p>
+            <span class="sl-more" aria-hidden="true">Mở khung xem chi tiết →</span>
+          </div>
+          <template class="pd-tpl">
+            <p class="pd-kicker">Dự án nhóm · Môn Hệ điều hành</p>
+            <h3 class="pd-title">Mô phỏng thuật toán lập lịch CPU theo độ ưu tiên</h3>
+            <span class="pd-rule" aria-hidden="true"></span>
+            <p class="pd-role">Xây dựng chương trình mô phỏng</p>
+            <ul class="exp-tech" aria-label="Công nghệ"><li>Python</li><li>Tkinter</li></ul>
+            <div class="pd-box"><p>Xây dựng chương trình mô phỏng thuật toán lập lịch CPU theo độ ưu tiên bằng Python, sử dụng Tkinter để thiết kế giao diện, cho phép nhập thông tin tiến trình và tính toán thời gian chờ, thời gian hoàn thành cùng các giá trị trung bình.</p></div>
+            <h4 class="pd-h">Tính năng nổi bật</h4>
+            <ul class="pd-feats"><li>✦ Nhập thông tin các tiến trình qua giao diện Tkinter</li><li>✦ Tính thời gian chờ và thời gian hoàn thành của từng tiến trình</li><li>✦ Tính các giá trị trung bình</li></ul>
+            <h4 class="pd-h">Hình ảnh dự án</h4>
+            <figure class="pd-fig"><div class="px-ph"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="2"/><path d="M4 18l5-5 4 4 3-3 4 4"/></svg><b>Ảnh dự án</b><span>Đặt ảnh vào <code>images/projects/cpu.jpg</code></span></div><img src="images/projects/cpu.jpg" alt="" loading="lazy" onerror="this.remove()"><figcaption>Giao diện dự án</figcaption></figure>
+            <div class="pd-box"><h4 class="pd-h">Kết quả</h4><p>Xây dựng thành công chương trình mô phỏng thuật toán Priority Scheduling bằng Python, tính toán thời gian chờ (WT), thời gian hoàn thành (TAT) và các giá trị trung bình.</p></div>
+            <p class="pd-src"><span class="pd-ph"></span></p>
+          </template>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ================= 04. KỸ NĂNG ================= -->
+    <section class="page" id="ky-nang" data-no="05" aria-labelledby="sk-title">
+      <header class="pg-head reveal">
+        <p class="kick">04 · Kỹ năng</p>
+        <span class="eyebrow">Những gì mình có</span>
+        <h2 id="sk-title">Kỹ <span class="hl">năng</span></h2>
+      </header>
+
+      <div class="meter reveal">
+        <h3 class="sk-h">Kỹ năng chuyên môn</h3>
+        <ul class="m-list">
+          <li class="m-row" style="--v:70"><span class="m-idx" aria-hidden="true">01</span><span class="m-name">HTML5</span><div class="m-track" role="img" aria-label="HTML5: 70%"><i></i></div><span class="m-val" data-to="70">70%</span></li>
+          <li class="m-row" style="--v:60"><span class="m-idx" aria-hidden="true">02</span><span class="m-name">CSS3</span><div class="m-track" role="img" aria-label="CSS3: 60%"><i></i></div><span class="m-val" data-to="60">60%</span></li>
+          <li class="m-row" style="--v:45"><span class="m-idx" aria-hidden="true">03</span><span class="m-name">JavaScript</span><div class="m-track" role="img" aria-label="JavaScript: 45%"><i></i></div><span class="m-val" data-to="45">45%</span></li>
+          <li class="m-row" style="--v:55"><span class="m-idx" aria-hidden="true">04</span><span class="m-name">Python</span><div class="m-track" role="img" aria-label="Python: 55%"><i></i></div><span class="m-val" data-to="55">55%</span></li>
+          <li class="m-row" style="--v:50"><span class="m-idx" aria-hidden="true">05</span><span class="m-name">C++ (OOP)</span><div class="m-track" role="img" aria-label="C++ (OOP): 50%"><i></i></div><span class="m-val" data-to="50">50%</span></li>
+          <li class="m-row" style="--v:60"><span class="m-idx" aria-hidden="true">06</span><span class="m-name">SQL (Database)</span><div class="m-track" role="img" aria-label="SQL (Database): 60%"><i></i></div><span class="m-val" data-to="60">60%</span></li>
+          <li class="m-row" style="--v:35"><span class="m-idx" aria-hidden="true">07</span><span class="m-name">Java</span><div class="m-track" role="img" aria-label="Java: 35%"><i></i></div><span class="m-val" data-to="35">35%</span></li>
+          <li class="m-row" style="--v:50"><span class="m-idx" aria-hidden="true">08</span><span class="m-name">Figma (UI Design)</span><div class="m-track" role="img" aria-label="Figma (UI Design): 50%"><i></i></div><span class="m-val" data-to="50">50%</span></li>
+        </ul>
+        <p class="m-note">// càng nhiều khối màu = càng thành thạo, mình vẫn đang học thêm mỗi ngày</p>
+      </div>
+
+      <div class="soft reveal">
+        <h3 class="sk-h">Kỹ năng mềm</h3>
+        <ul class="labels">
+          <li><span class="sk-ico"><img src="images/logo-quay-dung.svg" alt="" style="width:100%;height:100%;object-fit:contain"></span><span>Quay dựng &amp; chỉnh sửa clip, hình ảnh</span></li>
+          <li><span class="sk-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1h-8l-5 4v-4H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/><path d="M8 10h8M8 13h5"/></svg></span><span>Giao tiếp tốt</span></li>
+          <li><span class="sk-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 8.5V13l3 2M9.5 2.5h5"/></svg></span><span>Quản lý thời gian</span></li>
+          <li><span class="sk-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.4.4.6.9.6 1.4V16h6v-.8c0-.5.2-1 .6-1.4A6 6 0 0 0 12 3z"/></svg></span><span>Chủ động học hỏi</span></li>
+        </ul>
+        <ul class="line">
+          <li class="hang" style="--r:-3deg"><figure class="photo"><img src="images/kn-nhom.jpg" alt="Ánh Tuyết cùng bạn học làm việc nhóm bằng laptop" width="640" height="800" loading="lazy"><figcaption>Quay dựng &amp; chỉnh sửa clip, hình ảnh</figcaption></figure></li>
+          <li class="hang" style="--r:2.5deg"><figure class="photo"><img src="images/kn-giaotiep.jpg" alt="Nhóm bạn trao đổi và làm bài cùng nhau ở quán cà phê" width="640" height="800" loading="lazy"><figcaption>Giao tiếp &amp; phối hợp</figcaption></figure></li>
+          <li class="hang" style="--r:-2deg"><figure class="photo"><img src="images/kn-hoc.jpg" alt="Màn hình laptop đang viết code Python mô phỏng thuật toán" width="640" height="800" loading="lazy"><figcaption>Chủ động học hỏi</figcaption></figure></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================= 05. KINH NGHIỆM ================= -->
+    <section class="page" id="kinh-nghiem" data-no="06" aria-labelledby="xp-title">
+      <header class="pg-head reveal">
+        <p class="kick">05 · Kinh nghiệm</p>
+        <span class="eyebrow">Những gì mình đã trải qua</span>
+        <h2 id="xp-title">Kinh <span class="hl">nghiệm</span></h2>
+      </header>
+      <ol class="diary">
+        <li class="entry reveal"><span class="e-year">2026</span>
+          <div class="e-card"><h3>Thiết kế website Portfolio cá nhân</h3><p>Tự thiết kế và xây dựng website portfolio bằng HTML, CSS, JavaScript.</p></div></li>
+        <li class="entry reveal"><span class="e-year">2026</span>
+          <div class="e-card"><h3>Hoạt động nhóm</h3><p>Tham gia làm việc nhóm trong các dự án học tập: website việc làm infocv.vn và mô phỏng lập lịch CPU.</p></div></li>
+      </ol>
+    </section>
+
+    <!-- ================= 06. CHỨNG CHỈ & SỞ THÍCH ================= -->
+    <section class="page" id="showcase" data-no="07" aria-labelledby="showcase-title">
+      <header class="pg-head reveal">
+        <p class="kick">06 · Chứng chỉ và sở thích</p>
+        <h2 id="showcase-title">Chứng chỉ <span class="hl">&amp; sở thích</span></h2>
+      </header>
+
+      <div class="show">
+        <article class="cert reveal" id="chung-chi">
+          <h3 class="sk-h">Chứng chỉ</h3>
+          <div class="cc-empty">
+            <i class="c tl" aria-hidden="true"></i><i class="c tr" aria-hidden="true"></i><i class="c bl" aria-hidden="true"></i><i class="c br" aria-hidden="true"></i>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="9" r="5.5"/><path d="M8.5 14l-1.5 7 5-2.5 5 2.5-1.5-7"/></svg>
+            <p>Chưa có chứng chỉ</p>
+          </div>
+        </article>
+
+        <article class="hobby reveal" id="so-thich">
+          <h3 class="sk-h">Sở thích</h3>
+          <ul class="hb-list">
+            <li class="hb hb-music">
+              <div class="mu-cover"><img src="images/wrong-times.jpg" alt="Bìa bài hát Wrong Times (Remake)" width="280" height="280" loading="lazy"><span class="mu-disc" aria-hidden="true"></span></div>
+              <div class="mu-info">
+                <span class="mu-tag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V6l11-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/></svg>Nghe nhạc</span>
+                <b class="mu-song">Wrong Times (Remake)</b>
+                <span class="mu-art">YoungPuppy, Dangrangto</span>
+                <div class="mu-bar" aria-hidden="true"><i></i></div>
+                <div class="mu-ctl"><button class="mu-play" id="muPlay" type="button" aria-pressed="false" aria-label="Bật hiệu ứng đĩa than quay"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button><span class="mu-eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span><em>Bài hát mình hay nghe</em></div>
+              </div>
+            </li>
+            <li class="hb hb-movie">
+              <img class="mv-poster" src="images/phim-yeu-thich.jpg" alt="Poster phim Mùa Hè Yêu Dấu Của Chúng Ta" width="200" height="302" loading="lazy">
+              <div class="mv-info">
+                <span class="mu-tag"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M10 9.5v5l4.5-2.5z"/></svg>Xem phim</span>
+                <b class="mv-title">Mùa Hè Yêu Dấu Của Chúng Ta</b>
+                <span class="mv-meta">2021 · Phim bộ · Hài hước</span>
+                <em>Bộ phim mình yêu thích</em>
+              </div>
+            </li>
+            <li class="hb hb-tech">
+              <div class="tc-img photo"><img src="images/kham-pha-cong-nghe.jpg" alt="Hình minh họa trí tuệ nhân tạo (AI)" width="800" height="533" loading="lazy"></div>
+              <div class="tc-info">
+                <span class="mu-tag"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="2"/><path d="M9 3v4M15 3v4M9 17v4M15 17v4M3 9h4M3 15h4M17 9h4M17 15h4"/></svg>Khám phá công nghệ</span>
+                <b class="tc-title">Trí tuệ nhân tạo (AI)</b>
+              </div>
+            </li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================= 07. LIÊN HỆ: bưu thiếp ================= -->
+    <section class="page" id="cta" data-no="08" aria-labelledby="cta-title">
+      <header class="pg-head reveal">
+        <p class="kick">07 · Liên hệ</p>
+        <h2 id="cta-title">Cùng kết nối <span class="hl">nhé</span></h2>
+        <p class="ct-lead" id="lien-he">Bạn có thể liên hệ với mình qua các kênh dưới đây hoặc gửi lời nhắn bằng biểu mẫu bên cạnh.</p>
+      </header>
+
+      <div class="postcard reveal">
+        <ul class="ct-list">
+          <li class="ct-row"><span class="sk-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></svg></span><div><small>Email</small><a href="mailto:tranthianhtuyet350@gmail.com">tranthianhtuyet350@gmail.com</a></div></li>
+          <li class="ct-row"><span class="sk-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 3.5h3l1.5 4-2 1.5a11 11 0 0 0 5 5l1.5-2 4 1.5v3a2 2 0 0 1-2 2A15 15 0 0 1 4.5 5.5a2 2 0 0 1 2-2z"/></svg></span><div><small>Điện thoại</small><a href="tel:0373288212">0373288212</a></div></li>
+          <li class="ct-row"><span class="sk-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span><div><small>Địa chỉ</small><span>TP. Hồ Chí Minh</span></div></li>
+          <li class="ct-row"><span class="sk-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4.5 1.4-4.5-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.7 11.7 0 0 0-6.2 0C6.5 2.8 5.5 3.1 5.5 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></span><div><small>GitHub</small><a href="https://github.com/tuyettta3787-boop" target="_blank" rel="noopener">github.com/tuyettta3787-boop</a></div></li>
+        </ul>
+
+        <form class="ct-form" id="ctForm" novalidate>
+          <span class="post-stamp" aria-hidden="true"><b>TP.HCM</b><i>2026</i></span>
+          <h3 class="sk-h">Gửi lời nhắn</h3>
+          <label>Họ và tên<input type="text" name="name" autocomplete="name" required aria-describedby="err-name"><small class="ct-fe" id="err-name" hidden></small></label>
+          <label>Email của bạn<input type="email" name="email" autocomplete="email" required aria-describedby="err-email"><small class="ct-fe" id="err-email" hidden></small></label>
+          <label>Lời nhắn<textarea name="msg" rows="4" required aria-describedby="err-msg"></textarea><small class="ct-fe" id="err-msg" hidden></small></label>
+          <p class="ct-err" id="ctErr" role="alert" hidden>Bạn kiểm tra lại các ô được đánh dấu nhé.</p>
+          <p class="ct-ok" id="ctOk" role="status" hidden>Cảm ơn bạn! Ứng dụng email đang mở với nội dung đã điền — bấm gửi trong email để hoàn tất nhé.</p>
+          <button class="btn btn-ink" type="submit">Gửi lời nhắn</button>
+          <p class="ct-note">Bấm gửi sẽ mở ứng dụng email của bạn với nội dung đã điền, gửi tới địa chỉ của mình.</p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Cửa sổ chi tiết dự án -->
+  <div class="pd" id="pd" hidden role="dialog" aria-modal="true" aria-label="Chi tiết dự án">
+    <div class="pd-panel" id="pdPanel" tabindex="-1">
+      <button type="button" class="pd-back" id="pdBack">← Quay lại dự án</button>
+      <div id="pdBody"></div>
+    </div>
+  </div>
+
+  <script src="js/vendor/three.min.js"></script>
+  <script src="js/bg3d.js"></script>
+  <script src="js/album.js"></script>
+</body>
+</html>

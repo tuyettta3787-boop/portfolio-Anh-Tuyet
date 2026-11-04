@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <circle cx="256" cy="256" r="240" fill="#F7C5D0" stroke="#2B2B2B" stroke-width="8"/>
+  <g fill="none" stroke="#2B2B2B" stroke-width="10" stroke-linejoin="round" stroke-linecap="round">
+    <!-- thân clapperboard -->
+    <rect x="136" y="228" width="240" height="150" rx="14" fill="#FFFFFF"/>
+    <!-- thanh clapper phía trên -->
+    <g transform="rotate(-10 136 228)">
+      <rect x="136" y="184" width="240" height="44" rx="8" fill="#FFFFFF"/>
+      <line x1="190" y1="228" x2="212" y2="184"/>
+      <line x1="244" y1="228" x2="266" y2="184"/>
+      <line x1="298" y1="228" x2="320" y2="184"/>
+      <line x1="352" y1="228" x2="374" y2="184"/>
+    </g>
+    <!-- nút play -->
+    <polygon points="234,266 234,342 298,304" fill="#2B2B2B"/>
+  </g>
+</svg>
